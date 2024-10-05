@@ -19,6 +19,7 @@ repositories {
 dependencies {
 
     implementation 'jakarta.platform:jakarta.jakartaee-web-api:10.0.0'
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:6.0.0' 
 
     // Use JUnit test framework.
     testImplementation libs.junit
