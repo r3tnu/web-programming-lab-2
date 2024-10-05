@@ -7,7 +7,7 @@ import me.r3tnu.lab2.point.interfaces.PointValidator;
 
 public class PointValidatorLab2 implements PointValidator{
     public void validate(Point point) throws PointValidationException {
-        boolean isXValid = Arrays.asList(-3, -2, -1, 0, 1, 2, 3, 4, 5).contains(point.getX());
+        boolean isXValid = Arrays.asList(-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0).contains(point.getX());
         boolean isYValid = point.getY() > -3 && point.getY() < 3;
         boolean isRValid = Arrays.asList(1.0, 1.5, 2.0, 2.5, 3.0).contains(point.getR());
 
