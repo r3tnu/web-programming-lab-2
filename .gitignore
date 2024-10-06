@@ -6,3 +6,7 @@ build
 
 # Ignore custom scripts folder
 scripts
+
+app/bin
+
+.vscode
