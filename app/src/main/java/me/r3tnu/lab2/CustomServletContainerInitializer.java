@@ -25,6 +25,6 @@ public class CustomServletContainerInitializer implements ServletContainerInitia
         ControllerServlet controllerServlet = new ControllerServlet();
         context.addServlet("controllerServlet", controllerServlet).addMapping("/controller");
         ResourcesServlet resourcesServlet = new ResourcesServlet();
-        context.addServlet("resourcesServlet", resourcesServlet).addMapping("/resources");
+        context.addServlet("resourcesServlet", resourcesServlet).addMapping("/resources/*");
     }
 }
