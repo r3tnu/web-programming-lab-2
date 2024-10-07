@@ -15,8 +15,6 @@ public class ResourcesServlet extends HttpServlet {
         String uri = request.getRequestURI();
         String resourcePath = uri.substring(uri.indexOf("resources/") + "resources/".length());
 
-        getServletContext().log(resourcePath);
-
         try (InputStream resourceStream = getClass().getClassLoader().getResourceAsStream(resourcePath)) {
             if (!Objects.isNull(resourceStream)) {
                 resourceStream.transferTo(response.getOutputStream());
