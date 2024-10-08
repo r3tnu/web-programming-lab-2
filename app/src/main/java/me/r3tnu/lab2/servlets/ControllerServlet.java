@@ -11,12 +11,12 @@ import me.r3tnu.lab2.utils.HttpUtils;
 public class ControllerServlet extends HttpServlet {
 
     private void checkForUniqueParameter(Map<String, String[]> map, String key) throws RequestException{
-        if (map.containsKey(key)) {
-            if (map.get(key).length == 1) {
-                return;
-            }
+        if (!map.containsKey(key)) {
+            throw new RequestException("The %s parameter is missing".formatted(key));
         }
-        throw new RequestException("The %s parameter is missing or has duplicates".formatted(key));
+        if (map.get(key).length != 1) {
+            throw new RequestException("The %s parameter has duplicates".formatted(key));
+        }
     }
 
     private void checkRequestForPointData(HttpServletRequest request) throws RequestException {

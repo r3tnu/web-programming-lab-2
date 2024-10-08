@@ -20,16 +20,27 @@ public class AreaCheckServlet extends HttpServlet {
         this.pointValidator = pointValidator;
     }
 
+    private Double getParameter(HttpServletRequest request, String key) throws NumberFormatException {
+        Double number;
+        try {
+            number = Double.parseDouble(request.getParameter(key));
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("Couldn't parse %s as %s parameter\n".formatted(e.getMessage().substring(e.getMessage().indexOf(":") + 2), key));
+        }
+        return number;
+    }
+
     private Point getPointFromRequest(HttpServletRequest request) throws NumberFormatException {
-        Double x = Double.parseDouble(request.getParameter("x"));
-        Double y = Double.parseDouble(request.getParameter("y"));
-        Double r = Double.parseDouble(request.getParameter("r"));
+        Double x = getParameter(request, "x");
+        Double y = getParameter(request, "y");
+        Double r = getParameter(request, "r");
 
         return new Point(x, y, r);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        request.setAttribute("start", Instant.now());
         HttpUtils httpUtils = new HttpUtils();
         try {
             Point point = getPointFromRequest(request);
