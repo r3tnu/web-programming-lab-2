@@ -2,6 +2,7 @@ package me.r3tnu.lab2.servlets;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.regex.*;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -16,6 +17,10 @@ public class ControllerServlet extends HttpServlet {
         }
         if (map.get(key).length != 1) {
             throw new RequestException("The %s parameter has duplicates".formatted(key));
+        }
+        Matcher matcher = Pattern.compile("^\\d+(\\.\\d{1,15})?$").matcher(map.get(key)[0]);
+        if (!matcher.find()) {
+            throw new RequestException("The %s parameter cannot have more than 15 digits after decimal".formatted(key));
         }
     }
 
