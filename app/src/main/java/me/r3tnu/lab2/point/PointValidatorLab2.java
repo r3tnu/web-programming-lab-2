@@ -13,13 +13,13 @@ public class PointValidatorLab2 implements PointValidator{
 
         String errorMessageString = "";
         if (!isXValid) {
-            errorMessageString.concat("The x parameter must be in {-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0}\n");
+            errorMessageString = errorMessageString.concat("The x parameter must be in {-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0}\n");
         }
         if (!isYValid) {
-            errorMessageString.concat("The y parameter must be in (-3; 3)\n");
+            errorMessageString = errorMessageString.concat("The y parameter must be in (-3; 3)\n");
         }
         if (!isRValid) {
-            errorMessageString.concat("The r parameter must be in {1.0, 1.5, 2.0, 2.5, 3.0}");
+            errorMessageString = errorMessageString.concat("The r parameter must be in {1.0, 1.5, 2.0, 2.5, 3.0}");
         }
 
         if (!errorMessageString.isEmpty()) {
