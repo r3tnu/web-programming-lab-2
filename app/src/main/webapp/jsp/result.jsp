@@ -11,6 +11,6 @@
     <td> <%= point.getX() %> </td>
     <td> <%= point.getY() %> </td>
     <td> <%= point.getR() %> </td>
-    <td> <%= request.getAttribute("result") %> </td>
+    <td> <%= (boolean) request.getAttribute("result") ? "Hit" : "Miss" %> </td>
     <td> <%= Duration.between(start, end).getNano() %> </td>
 </tr>
